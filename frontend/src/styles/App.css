@@ -1,8 +1,44 @@
 .App {
   width: 100vw;
   height: 100vh;
+  padding: none;
+  margin: none;
 }
 .container {
   text-align: center;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 4rem;
+  color: #fff;
+}
+
+p {
+  font-size: 20px;
+  color: azure;
+}
+
+button {
+  width: 250px;
+  height: 70px;
+  border-radius: 10px;
+  border: none;
+  margin: 20px;
+  background-color: rgba(143, 5, 5, 0.678);
+  box-shadow: 10px 10px 5px 1px rgba(167, 37, 37, 0.76);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  background-color: rgba(167, 110, 110, 0.678);
+}
+
+.space {
+  height: 80px;
 }

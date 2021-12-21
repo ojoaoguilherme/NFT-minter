@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+
 import { ethers } from "ethers";
 import MyEpicNFT from "./utils/MyEpicNFT.json";
 import "./styles/App.css";
+
+import { SocialMedias } from "./components/socialMedias/SocialMedias";
 
 // Constants
 const OPENSEA_LINK = "https://testnets.opensea.io/assets/";
@@ -9,6 +12,7 @@ const TOTAL_MINT_COUNT = 50;
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [mintMessage, setMintMessage] = useState(0);
   // Checks if the user is connected to the site
   const checkIfWalletIsConnected = async () => {
     /*
@@ -57,12 +61,16 @@ const App = () => {
 
   // the button to connect the wallet
   const renderNotConnectedContainer = () => (
-    <button onClick={connectWallet}>Connect to Wallet</button>
+    <button onClick={connectWallet}>
+      <p>Connect</p>
+    </button>
   );
 
   // the button to connect the wallet
   const renderConnectedContainer = () => (
-    <button onClick={askContractToMintNft}>Mine an NFT</button>
+    <button onClick={askContractToMintNft}>
+      <p>Mint NFT</p>
+    </button>
   );
 
   const askContractToMintNft = async () => {
@@ -80,7 +88,9 @@ const App = () => {
 
         let mineNFT = await connectedContract.makeAnEpicNFT();
         console.log("Mining your NFT...");
+        setMintMessage(1);
         await mineNFT.wait();
+        setMintMessage(0);
 
         console.log(
           `NFT mined! se in etherscan: https://rinkeby.etherscan.io/tx/${mineNFT.hash}`
@@ -126,16 +136,24 @@ const App = () => {
 
   return (
     <div className="App">
+      {/* <Header /> */}
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">My NFT Collection</p>
-          <p className="sub-text">
-            Each unique. Each beautiful. Discover your NFT today.
+          <h1>My First Collection of Simples NFTs</h1>
+          <p>
+            Each NFT is minted and randomly generated on-chain with 3 words in a
+            black background
           </p>
+          {mintMessage ? (
+            <p className="space">Aguarde, minerando sua NFT...</p>
+          ) : (
+            <div className="space"></div>
+          )}
           {currentAccount
             ? renderConnectedContainer()
             : renderNotConnectedContainer()}
         </div>
+        <SocialMedias />
       </div>
     </div>
   );

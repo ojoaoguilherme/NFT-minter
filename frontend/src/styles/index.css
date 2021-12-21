@@ -1,5 +1,10 @@
-body {
+body,
+html {
+  background-image: url(https://wallpaperaccess.com/full/7087217.jpg);
+  background-size: cover;
+  background-position: center;
   box-sizing: border-box;
+
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
