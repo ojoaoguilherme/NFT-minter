@@ -6,9 +6,9 @@ const main = async () => {
   await nftContract.deployed();
   console.log("NFT contract deployed to:", nftContract.address);
 
-  let tx = await nftContract.makeAnEpicNFT();
-  await tx.wait();
-  console.log("Mint #1");
+  // let tx = await nftContract.makeAnEpicNFT();
+  // await tx.wait();
+  // console.log("Mint #1");
 };
 
 const runMain = async () => {

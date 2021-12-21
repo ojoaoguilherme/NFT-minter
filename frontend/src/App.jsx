@@ -74,7 +74,7 @@ const App = () => {
   );
 
   const askContractToMintNft = async () => {
-    const contractAddress = "0x615b6bAcbe28fC8488085fE35DD661284a6D00D3";
+    const contractAddress = "0x1a93f6e93e5d5BB22B8e9F4AE8Faa76f3085e8D5";
     try {
       const { ethereum } = window;
       if (ethereum) {
@@ -104,7 +104,7 @@ const App = () => {
   };
 
   const setupEventListner = async () => {
-    const contractAddress = "0x615b6bAcbe28fC8488085fE35DD661284a6D00D3";
+    const contractAddress = "0x1a93f6e93e5d5BB22B8e9F4AE8Faa76f3085e8D5";
 
     try {
       const { ethereum } = window;
@@ -145,7 +145,7 @@ const App = () => {
             black background
           </p>
           {mintMessage ? (
-            <p className="space">Aguarde, minerando sua NFT...</p>
+            <p className="space">Wait, your NFT is being minted...</p>
           ) : (
             <div className="space"></div>
           )}
