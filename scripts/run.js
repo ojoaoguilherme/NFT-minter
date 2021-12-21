@@ -14,7 +14,6 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const [deployer] = await hre.ethers.getSigners();
   const MyEpicNFT = await hre.ethers.getContractFactory("MyEpicNFT");
   const nftContract = await MyEpicNFT.deploy();
   await nftContract.deployed();

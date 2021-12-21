@@ -4,7 +4,7 @@ import MyEpicNFT from "./utils/MyEpicNFT.json";
 import "./styles/App.css";
 
 // Constants
-const OPENSEA_LINK = "";
+const OPENSEA_LINK = "https://testnets.opensea.io/assets/";
 const TOTAL_MINT_COUNT = 50;
 
 const App = () => {
@@ -31,9 +31,8 @@ const App = () => {
       const account = accounts[0];
       console.log("Found and authorized account: ", account);
       setCurrentAccount(account);
-    } else {
-      console.log("Did not found authorized account");
-    }
+      setupEventListner();
+    } else console.log("Did not found authorized account");
   };
 
   // connects the users metamask account of choice
@@ -50,6 +49,7 @@ const App = () => {
       });
       console.log(`${accounts[0]} connected!`);
       setCurrentAccount(accounts[0]);
+      setupEventListner();
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +66,7 @@ const App = () => {
   );
 
   const askContractToMintNft = async () => {
-    const contractAddress = "0x419D7c8F7252093ee457D71520116809712EB238";
+    const contractAddress = "0x615b6bAcbe28fC8488085fE35DD661284a6D00D3";
     try {
       const { ethereum } = window;
       if (ethereum) {
@@ -87,6 +87,33 @@ const App = () => {
         );
       } else {
         console.log("Did not find the ethereum object");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const setupEventListner = async () => {
+    const contractAddress = "0x615b6bAcbe28fC8488085fE35DD661284a6D00D3";
+
+    try {
+      const { ethereum } = window;
+      if (ethereum) {
+        const provider = new ethers.providers.Web3Provider(ethereum);
+        const signer = provider.getSigner();
+        const connectedContract = new ethers.Contract(
+          contractAddress,
+          MyEpicNFT.abi,
+          signer
+        );
+
+        connectedContract.on("NewEpicNFTMinted", (from, tokenId) => {
+          console.log(`${from} sender and token ID: ${tokenId}`);
+
+          alert(
+            `Your NFT is available in ${OPENSEA_LINK}${contractAddress}/${tokenId}/`
+          );
+        });
       }
     } catch (error) {
       console.log(error);
