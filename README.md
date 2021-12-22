@@ -1,4 +1,5 @@
 # Basic NFT Project
+### Live preview: https://nft-minter-kappa.vercel.app/
 
 This project demonstrates a basic approach in creating an NFT project with solidy and react.
 
