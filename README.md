@@ -1,15 +1,10 @@
-# Basic Sample Hardhat Project
+# Basic NFT Project
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
+This project demonstrates a basic approach in creating an NFT project with solidy and react.
 
-Try running some of the following tasks:
+Try running some of the following tasks after clonning the project:
 
 ```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
+yarn install
+yarn frontend
 ```
